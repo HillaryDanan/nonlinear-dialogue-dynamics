@@ -1,0 +1,12 @@
+{
+  "participant_id": "pilot_001",
+  "condition": "referenced",
+  "provider": "google",
+  "coherence_mean": 0.7273846126467726,
+  "coherence_scores": [
+    0.7744262948974209,
+    0.7058532869088636,
+    0.7018742561340332
+  ],
+  "timestamp": "2025-09-25T13:47:14.870188"
+}

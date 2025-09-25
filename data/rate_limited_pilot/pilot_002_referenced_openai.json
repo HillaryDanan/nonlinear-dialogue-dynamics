@@ -1,0 +1,12 @@
+{
+  "participant_id": "pilot_002",
+  "condition": "referenced",
+  "provider": "openai",
+  "coherence_mean": 0.002115407072020662,
+  "coherence_scores": [
+    -0.02626739971443426,
+    0.08555886169304239,
+    -0.05294524076254614
+  ],
+  "timestamp": "2025-09-25T13:52:53.733933"
+}

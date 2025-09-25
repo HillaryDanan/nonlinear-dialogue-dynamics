@@ -1,0 +1,12 @@
+{
+  "participant_id": "pilot_001",
+  "condition": "linear",
+  "provider": "google",
+  "coherence_mean": 0.79281746061104,
+  "coherence_scores": [
+    0.7781749003581676,
+    0.8168181290138897,
+    0.7834593524610625
+  ],
+  "timestamp": "2025-09-25T13:43:59.181956"
+}

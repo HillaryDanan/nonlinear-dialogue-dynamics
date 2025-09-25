@@ -1,0 +1,12 @@
+{
+  "participant_id": "pilot_001",
+  "condition": "linear",
+  "provider": "anthropic",
+  "coherence_mean": 0.7929208711971804,
+  "coherence_scores": [
+    0.8190502036183965,
+    0.7929573059082031,
+    0.7667551040649414
+  ],
+  "timestamp": "2025-09-25T13:43:09.787631"
+}
