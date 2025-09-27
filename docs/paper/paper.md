@@ -1,7 +1,7 @@
 # Explicit Conversational Referencing Universally Degrades LLM Coherence: Evidence from Three Model Architectures
 
 **Hillary Danan¹**  
-¹ [Affiliation]
+¹ Independent Researcher
 
 ## Abstract
 
