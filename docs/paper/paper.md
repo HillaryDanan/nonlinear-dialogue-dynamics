@@ -332,4 +332,4 @@ Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ..
 
 ## Appendix: Supplementary Tables
 
-[Additional statistical details and raw data summaries would go here]
+[Additional statistical details and raw data summaries will go here]
