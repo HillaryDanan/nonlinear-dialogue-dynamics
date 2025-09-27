@@ -6,15 +6,16 @@
 
 ## Overview
 
-This repository presents experimental evidence that explicit conversational referencing significantly degrades LLM coherence, contrary to theoretical predictions from human discourse research. Testing across three major language models (Anthropic Claude, Google Gemini, OpenAI GPT-4) with n=50 prompts per condition reveals consistent degradation patterns, challenging the application of human communication theories to artificial systems.
+This repository presents experimental evidence that explicit conversational referencing currently degrades coherence in major LLMs, contrary to predictions from human discourse research. Testing across three language models (Anthropic Claude, Google Gemini, OpenAI GPT-4) with n=50 prompts per condition reveals consistent degradation patterns, suggesting that contemporary language models may process discourse differently than expected from human communication theories.
 
 ## 🔑 Key Finding
 
-**Explicit referencing universally degrades coherence (mean d=-0.429, p<0.001)**
+**Explicit referencing currently degrades coherence in tested models (mean d=-0.429, p<0.001)**
 
 - Replicated across three distinct model architectures
 - Strongest degradation at shallow (N-3) and deep (N-7+) reference depths  
-- Direct contradiction of Clark & Brennan (1991) grounding theory
+- Suggests mismatch between human discourse strategies and current LLM optimization
+- Notable exception: Google Gemini improves with contradictory references (d=+0.877)
 
 ## Research Question
 
@@ -101,11 +102,31 @@ nonlinear-dialogue-dynamics/
 
 ## Theoretical Implications
 
-These findings suggest fundamental differences between human and LLM discourse processing:
+These findings suggest important differences between human and LLM discourse processing:
 
-- **No Working Memory Architecture:** Degradation patterns don't map to human memory limits (Miller, 1956; Cowan, 2001)
-- **Implicit Attention Mechanisms:** Transformers (Vaswani et al., 2017) handle context without explicit reference
-- **Forced Structure Harmful:** Explicit referencing disrupts natural attention-based processing
+- **Working Memory Differences:** Degradation patterns don't map to human memory limits (Miller, 1956; Cowan, 2001)
+- **Implicit Context Processing:** Current transformers (Vaswani et al., 2017) may be optimized for implicit rather than explicit reference
+- **Training Effects:** Observed patterns may reflect discourse distributions in training data
+- **Template Sensitivity:** Specific phrasing of references may matter as much as the reference itself
+
+## Alternative Interpretations
+
+The observed degradation may result from multiple factors:
+
+- **Training Data:** Natural text may rarely contain explicit back-references at tested depths
+- **Template Artifacts:** Our reference phrases might introduce unnatural discourse markers
+- **Metric Limitations:** SBERT semantic similarity may not fully capture discourse coherence
+- **Model-Specific Effects:** The Google anomaly suggests training and optimization matter significantly
+
+## Future Research Directions
+
+This work opens several avenues for investigation:
+
+- **Template Ablations:** Test alternative reference phrasings to isolate true effects
+- **Attention Analysis:** Examine how models process explicit vs implicit references
+- **Human Baselines:** Compare with human performance on identical tasks
+- **Training Interventions:** Investigate whether targeted fine-tuning can improve reference handling
+- **Cross-Task Validation:** Test whether effects persist across different applications
 
 ---
 
@@ -152,8 +173,9 @@ If you use this work, please cite:
   author={Danan, Hillary},
   journal={arXiv preprint},
   year={2025},
-  note={Robust negative result: explicit referencing degrades coherence 
-        (d=-0.429, p<0.001) across Anthropic Claude, Google Gemini, and OpenAI GPT-4}
+  note={Explicit referencing degrades coherence (d=-0.429, p<0.001) in current LLMs,
+        with model-specific variations suggesting training and optimization effects}
+}
 }
 ```
 
