@@ -1,0 +1,70 @@
+======================================================================
+NON-LINEAR DIALOGUE DYNAMICS: EXPERIMENTAL RESULTS
+======================================================================
+
+Experiment ID: fcfc59401205
+Date: 2025-09-26 12:26
+Protocol: 50 prompts × 5 conditions
+Coherence method: SBERT
+
+======================================================================
+HYPOTHESIS TESTING
+======================================================================
+
+ANTHROPIC
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✓ immediate: degrades (d=-0.097, p=0.6305)
+  ✓ shallow: degrades (d=-0.791, p=0.0002)
+  ✓ deep: degrades (d=-0.444, p=0.0305)
+  ✓ contradictory: degrades (d=-0.261, p=0.1991)
+
+H2: Degradation patterns
+  linear: stable (critical depth: None)
+  immediate: irregular (critical depth: None)
+  shallow: irregular (critical depth: None)
+  deep: irregular (critical depth: None)
+  contradictory: irregular (critical depth: None)
+
+GOOGLE
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✗ immediate: degrades (d=-0.477, p=0.0203)
+  ✗ shallow: degrades (d=-0.447, p=0.0294)
+  ✓ deep: degrades (d=-0.625, p=0.0026)
+  ✓ contradictory: improves (d=0.877, p=0.0)
+
+H2: Degradation patterns
+  linear: stable (critical depth: None)
+  immediate: stable (critical depth: None)
+  shallow: irregular (critical depth: None)
+  deep: irregular (critical depth: None)
+  contradictory: irregular (critical depth: None)
+
+OPENAI
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✗ immediate: degrades (d=-0.156, p=0.4425)
+  ✓ shallow: degrades (d=-1.136, p=0.0)
+  ✓ deep: degrades (d=-0.996, p=0.0)
+  ✓ contradictory: degrades (d=-0.597, p=0.0039)
+
+H2: Degradation patterns
+  linear: stable (critical depth: None)
+  immediate: irregular (critical depth: None)
+  shallow: irregular (critical depth: None)
+  deep: stable (critical depth: None)
+  contradictory: stable (critical depth: None)
+
+======================================================================
+CONCLUSIONS
+======================================================================
+
+✗ HYPOTHESIS NOT SUPPORTED
+Mean effect size across all comparisons: d=-0.429
+
+Explicit referencing appears to DEGRADE coherence.
+This suggests models perform better with linear progression.

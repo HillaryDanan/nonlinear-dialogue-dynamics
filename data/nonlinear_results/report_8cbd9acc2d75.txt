@@ -1,0 +1,70 @@
+======================================================================
+NON-LINEAR DIALOGUE DYNAMICS: EXPERIMENTAL RESULTS
+======================================================================
+
+Experiment ID: 8cbd9acc2d75
+Date: 2025-09-25 15:14
+Protocol: 50 prompts × 5 conditions
+Coherence method: SBERT
+
+======================================================================
+HYPOTHESIS TESTING
+======================================================================
+
+ANTHROPIC
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✗ immediate: degrades (d=-0.097, p=0.6305)
+  ✓ shallow: degrades (d=-0.791, p=0.0002)
+  ✗ deep: degrades (d=-0.444, p=0.0305)
+  ✗ contradictory: degrades (d=-0.261, p=0.1991)
+
+H2: Degradation patterns
+  linear: stable (critical depth: None)
+  immediate: irregular (critical depth: None)
+  shallow: irregular (critical depth: None)
+  deep: irregular (critical depth: None)
+  contradictory: irregular (critical depth: None)
+
+GOOGLE
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✓ immediate: improves (d=7.146, p=0.0)
+  ✓ shallow: improves (d=4.767, p=0.0)
+  ✓ deep: improves (d=3.174, p=0.0)
+  ✓ contradictory: improves (d=4.612, p=0.0)
+
+H2: Degradation patterns
+  linear: stable (critical depth: 1)
+  immediate: irregular (critical depth: 1)
+  shallow: irregular (critical depth: 1)
+  deep: gradual (critical depth: 1)
+  contradictory: irregular (critical depth: 1)
+
+OPENAI
+----------------------------------------
+
+H1: Referencing improves coherence
+  ✓ immediate: improves (d=3.573, p=0.0)
+  ✓ shallow: improves (d=3.072, p=0.0)
+  ✓ deep: improves (d=2.58, p=0.0)
+  ✓ contradictory: improves (d=3.31, p=0.0)
+
+H2: Degradation patterns
+  linear: irregular (critical depth: 1)
+  immediate: stable (critical depth: 1)
+  shallow: irregular (critical depth: 1)
+  deep: gradual (critical depth: 1)
+  contradictory: irregular (critical depth: 1)
+
+======================================================================
+CONCLUSIONS
+======================================================================
+
+✓ HYPOTHESIS PARTIALLY SUPPORTED
+Mean effect size across all comparisons: d=2.553
+
+Explicit referencing shows minor improvement in coherence.
+Effect is smaller than expected from theoretical predictions.
