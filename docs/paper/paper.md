@@ -1,7 +1,7 @@
 # Explicit Conversational Referencing Universally Degrades LLM Coherence: Evidence from Three Model Architectures
 
 **Hillary Danan¹**  
-¹ Independent Researcher
+¹ [Affiliation]
 
 ## Abstract
 
@@ -150,38 +150,72 @@ Within-subjects design with five reference conditions:
 
 ### 4.1 Theoretical Implications
 
-Our results fundamentally challenge the application of human discourse theories to LLMs:
+Our results suggest important differences between human and LLM discourse processing, though multiple interpretations merit consideration:
 
-#### 4.1.1 Grounding Theory Inapplicable
+#### 4.1.1 Grounding Theory May Not Transfer Directly
 
-Clark & Brennan's (1991) grounding principle, central to human communication, appears counterproductive for LLMs. While humans require explicit acknowledgment to establish common ground, LLMs maintain implicit context through attention mechanisms.
+Clark & Brennan's (1991) grounding principle, while central to human communication, appears less effective for current LLMs. This may indicate that:
+- LLMs maintain context through implicit attention mechanisms rather than explicit acknowledgment
+- Current training regimes optimize for implicit rather than explicit discourse patterns
+- The specific implementation of grounding matters more than the principle itself
 
-#### 4.1.2 No Working Memory Architecture
+#### 4.1.2 Different Memory Architecture
 
-The peak degradation at N-3 (shallow references) doesn't align with Cowan's (2001) 4±1 working memory limit. Instead of graceful degradation matching human cognitive constraints, we observe irregular patterns suggesting fundamentally different processing.
+The peak degradation at N-3 (shallow references) doesn't align with Cowan's (2001) 4±1 working memory limit. Rather than suggesting fundamentally incompatible architectures, this may indicate:
+- LLMs process context holistically rather than through discrete memory buffers
+- Training data may lack explicit reference patterns at these depths
+- Our reference templates may introduce unnatural discourse markers
 
-#### 4.1.3 Implicit Superior to Explicit
+#### 4.1.3 Current Optimization Favors Implicit Processing
 
-Transformer attention (Vaswani et al., 2017) processes all tokens simultaneously without explicit memory buffers. Forcing explicit reference structure onto this implicit mechanism appears to create interference rather than enhancement.
+Transformer attention (Vaswani et al., 2017) processes all tokens simultaneously without explicit memory buffers. The observed interference when forcing explicit structure could result from:
+- Misalignment between training objectives and explicit reference handling
+- Template-specific artifacts rather than reference degradation per se
+- Learned expectations for implicit rather than explicit discourse flow
 
-### 4.2 The Google Anomaly
+### 4.2 Alternative Interpretations
 
-Google Gemini's improvement with contradictory references (d=+0.877) while other models degrade suggests:
+Several factors could explain the observed degradation beyond architectural incompatibility:
 
-- Possible training on debate/argumentation datasets
-- Different handling of adversarial or contradictory prompts
-- Model-specific architectural modifications
+#### 4.2.1 Template Artifacts
+Our reference templates ("Following up on...", "Returning to...") may introduce confounds:
+- These specific phrases might be rare in training data
+- Templates could prime unnecessary context switches
+- Syntactic complexity might interfere with semantic processing
 
-This finding warrants further investigation into training data composition and its effects on discourse handling.
+#### 4.2.2 Metric Limitations
+SBERT semantic similarity may not fully capture coherence:
+- The metric might penalize explicit discourse markers
+- Vector similarity could miss pragmatic coherence
+- Human evaluation might reveal different patterns
 
-### 4.3 Practical Implications
+#### 4.2.3 Training Data Distribution
+The degradation might reflect training corpus characteristics:
+- Natural text may rarely contain explicit back-references at N-3 or N-7 depths
+- Models may have learned that explicit references signal topic changes
+- Implicit reference may simply be more common in training data
 
-For prompt engineering and conversational AI design:
+### 4.3 The Google Anomaly
 
-- Avoid explicit back-references ("as you said earlier")
-- Maintain linear conversation flow
-- Let models handle context implicitly
-- Exception: Contradictory prompts may benefit Google systems specifically
+Google Gemini's improvement with contradictory references (d=+0.877) is particularly intriguing and suggests:
+
+- Possible optimization for argumentative or debate-style discourse
+- Different RLHF approaches to handling disagreement
+- Training on more diverse conversational patterns
+- A potential clue about when explicit references DO enhance performance
+
+This anomaly challenges our universal degradation narrative and suggests model-specific training effects play a crucial role.
+
+### 4.4 Practical Implications
+
+Our findings suggest considerations for prompt engineering and conversational AI design:
+
+- **For most models:** Linear conversation flow may yield better coherence than explicit back-references
+- **Context awareness:** Let models handle context implicitly unless specific evidence suggests otherwise
+- **Model-specific strategies:** Google systems may benefit from contradictory framing
+- **Template sensitivity:** The specific phrasing of references likely matters substantially
+
+These are preliminary guidelines that warrant validation across different tasks and domains.
 
 ### 4.4 Limitations
 
@@ -197,35 +231,62 @@ For prompt engineering and conversational AI design:
 
 ### 5.1 Mechanistic Understanding
 
-- Analyze attention patterns during reference processing
-- Probe intermediate layer representations
-- Compare implicit vs explicit reference mechanisms
+- **Attention Analysis:** Examine attention patterns during reference processing to understand how models allocate focus
+- **Layer-wise Probing:** Investigate intermediate representations to identify where coherence degradation occurs
+- **Causal Interventions:** Use activation patching to determine which components drive the degradation
 
-### 5.2 Cross-Model Studies
+### 5.2 Methodological Extensions
 
-- Test additional architectures (e.g., Llama, Mistral)
-- Investigate training data effects
-- Explore fine-tuning impacts
+- **Template Ablations:** Test alternative reference phrasings to isolate template artifacts from true reference effects
+- **Human Baselines:** Compare with human performance on identical tasks
+- **Alternative Metrics:** Evaluate using perplexity, human judgments, and task-specific coherence measures
+- **Gradual vs Explicit:** Compare explicit references with gradual topic transitions
 
-### 5.3 Applied Research
+### 5.3 Cross-Model Studies
 
-- Develop reference-free prompting strategies
-- Design interfaces that leverage implicit processing
-- Create coherence-optimized conversation flows
+- **Architecture Variations:** Test decoder-only vs encoder-decoder models
+- **Scale Effects:** Investigate whether larger models show different patterns
+- **Training Data Analysis:** Examine reference patterns in pretraining corpora
+- **Fine-tuning Impact:** Test whether targeted training can improve explicit reference handling
+
+### 5.4 Applied Research
+
+- **Task-Specific Evaluation:** Test whether degradation persists across different tasks (QA, summarization, reasoning)
+- **Adaptive Prompting:** Develop methods to detect when explicit vs implicit reference is optimal
+- **Interface Design:** Create conversation UIs that leverage these findings
+- **Training Innovations:** Design pretraining or fine-tuning approaches that better handle explicit discourse
+
+### 5.5 Theoretical Extensions
+
+- **Discourse Model Comparison:** Test other discourse theories beyond grounding
+- **Cognitive Load Analysis:** Investigate whether reference complexity correlates with degradation
+- **Cross-linguistic Studies:** Examine whether patterns hold across languages with different discourse conventions
+- **Pragmatic Coherence:** Develop metrics that capture pragmatic rather than just semantic coherence
 
 ---
 
 ## 6. Conclusion
 
-This study provides robust evidence that explicit conversational referencing, beneficial for human communication, universally degrades LLM coherence. The mean effect size of d=-0.429 (p<0.001), replicated across three distinct architectures, demonstrates that LLMs process discourse through fundamentally different mechanisms than humans.
+This study provides evidence that explicit conversational referencing, a strategy beneficial for human communication, currently degrades coherence in major LLMs. The mean effect size of d=-0.429 (p<0.001), replicated across three distinct architectures, suggests that contemporary language models may process discourse differently than assumed by human communication theories.
 
-These findings have immediate implications:
+However, these findings invite multiple interpretations:
 
-- **Theoretical:** Challenge assumptions about applying human discourse theories to AI
-- **Practical:** Inform prompt engineering best practices
-- **Technical:** Suggest architectural considerations for future models
+- **Architectural:** Current transformer-based models may be optimized for implicit rather than explicit context management
+- **Training-based:** The degradation may reflect the distribution of discourse patterns in training data
+- **Methodological:** Template phrasing and metric choice may influence the observed effects
+- **Task-specific:** Effects may vary across different applications and domains
 
-The universal degradation pattern, particularly at shallow reference depths, indicates that forcing human-like discourse structures onto transformer-based models is not merely ineffective but actively harmful to coherence.
+The notable exception of Google Gemini's improvement with contradictory references (d=+0.877) demonstrates that the relationship between explicit referencing and coherence is more complex than initially apparent. This suggests that blanket statements about LLM discourse processing may be premature.
+
+These findings have several implications:
+
+- **Theoretical:** Encourage reconsideration of how human discourse theories apply to AI systems
+- **Practical:** Inform prompt engineering strategies, with awareness that effects may be model- and task-specific
+- **Technical:** Suggest opportunities for training or architectural innovations that better handle varied discourse patterns
+
+Rather than indicating fundamental incompatibility between LLMs and explicit referencing, our results highlight the need for nuanced understanding of how different models, trained on different data with different objectives, handle discourse structure. The observed degradation patterns point toward exciting opportunities for improving human-AI interaction through better alignment of discourse strategies with model capabilities.
+
+Future work should investigate the boundaries of these effects, explore alternative reference implementations, and develop training approaches that enable models to handle both implicit and explicit discourse patterns effectively. The field would benefit from systematic investigation of when, why, and for which models explicit referencing helps or hinders communication.
 
 ---
 
